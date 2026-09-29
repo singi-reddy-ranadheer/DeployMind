@@ -76,3 +76,31 @@ This repository contains the first real backend slice. The next integration step
 - TypeSafe: https://docs.typesafe.ai/introduction/quickstart
 - Hindsight: https://docs.hindsight.vectorize.io/python-sdk/
 - Groq: https://console.groq.com/docs/text-chat
+
+
+## Frontend demo
+
+A self-contained browser frontend is in `frontend/index.html`. It supports the full hackathon demo flow:
+
+1. Enter a deployment change.
+2. Analyze it against deployment memory.
+3. Show risk, reasoning, recommendations, and retrieved memory.
+4. Record the outcome.
+5. Retain the experience through `/deployments/learn`.
+6. Re-run a similar deployment to demonstrate learning.
+
+Set the backend URL in the browser console/local storage before the live demo:
+
+```js
+localStorage.setItem("deploymind_api", "https://YOUR-BACKEND-URL")
+location.reload()
+```
+
+If no API URL is configured, the UI intentionally falls back to demo memory so the presentation remains usable.
+
+## Fast deployment
+
+- Backend: deploy the repository with the included `Dockerfile` or `render.yaml`.
+- Add the Hindsight, Jev/TypeSafe, and Groq environment variables shown in `.env.example`.
+- Serve `frontend/index.html` from any static host.
+- Point `deploymind_api` at the deployed backend.
