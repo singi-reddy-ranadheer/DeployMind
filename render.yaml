@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: deploymind-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: TYPESAFE_API_KEY
+        sync: false
+      - key: JEV_ENABLED
+        value: "true"
+      - key: HINDSIGHT_API_KEY
+        sync: false
+      - key: HINDSIGHT_BASE_URL
+        value: https://api.hindsight.vectorize.io
+      - key: HINDSIGHT_BANK_ID
+        value: deploymind
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: FRONTEND_ORIGIN
+        value: "*"
